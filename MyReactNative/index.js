@@ -1,6 +1,7 @@
-import { AppRegistry,Image, View  } from 'react-native';
-import App from './App';
-import React, {Component} from 'react'
+import { AppRegistry } from 'react-native';
+import React, {Component} from 'react';
+//#region 原生组件练习
+/* reactNative 原生组件练习
 import LotsOfGreetings from './componts/LotsOfGreetings'
 import BlinkApp from './componts/BlinkApp'
 import LotsOfStyle from './componts/LotsOfStyle'
@@ -11,19 +12,13 @@ import ScrollViewTest from './componts/ScrollViewTest'
 import FlatListTest from './componts/FlatListTest'
 import SectionListTest from './componts/SectionListTest'
 import FetchTest from './componts/FetchTest'
-// class Bananas extends Component {
-//   render() {
-//     let pic = {
-//       uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-//     };
-//     return (
-//       <View>
-//         <Image source={pic} style={{width: 193, height: 110}} />
-//         <View style={{width: 100, height: 100, backgroundColor: 'skyblue'}} />
-//         <View style={{width: 150, height: 150, backgroundColor: 'steelblue'}} />
-//       </View>
-//     );
-//   }
-// }
+*/
+//#endregion
+import LoginApp from './testApp/Login';
+import AV from 'leancloud-storage';
+AV.init({
+  appId: 'VKJfEk81YqWIqkxLtqxlyGpH-gzGzoHsz',
+  appKey: 'H1hrm0dJWbnpzFAS6jJRsmuD'
+});
 
-AppRegistry.registerComponent('MyReactNative', () => FetchTest);
+AppRegistry.registerComponent('MyReactNative', () => LoginApp);
