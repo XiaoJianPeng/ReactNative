@@ -14,11 +14,13 @@ import SectionListTest from './componts/SectionListTest'
 import FetchTest from './componts/FetchTest'
 */
 //#endregion
-import LoginApp from './testApp/Login';
+import {Theme} from 'teaset';
 import AV from 'leancloud-storage';
+import App from './testApp/ReactNavigationApp'
 AV.init({
   appId: 'VKJfEk81YqWIqkxLtqxlyGpH-gzGzoHsz',
   appKey: 'H1hrm0dJWbnpzFAS6jJRsmuD'
 });
+// Theme.set(Theme.themes.default);
 
-AppRegistry.registerComponent('MyReactNative', () => LoginApp);
+AppRegistry.registerComponent('MyReactNative', () => App);
