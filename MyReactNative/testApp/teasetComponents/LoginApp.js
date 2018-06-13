@@ -87,7 +87,7 @@ class LoginApp extends Component {
     user.setUsername(this.state.username);
     user.setPassword(this.state.password);
     console.warn(user);
-    await user.save().then(
+    await user.signUp().then(
       (res) => {
         retUser = res.toJSON()
       }).catch((error) => {

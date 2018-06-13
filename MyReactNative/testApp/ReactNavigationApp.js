@@ -6,22 +6,30 @@ import HomeApp from './teasetComponents/HomeApp'　// home 页
 // 3 DrawerNavigator: 抽屉效果，侧边滑出
 const App = StackNavigator({
   Login: {screen: LoginApp},
-  Home: {screen: HomeApp},
+  Home: {
+    screen: HomeApp,
+    navigationOptions: ({navigation}) => ({
+      header: null, 
+      gesturesEnable: true
+    })
+  },
 },{
   initialRouteName: 'Home', // 默认显示界面
-  navigationOptions: { // 屏幕导航的默认选项, 也可以在组件内用 static navigationOptions 设置(会覆盖此处的设置)
-    // header:{},
-    // header: { // 导航栏相关设置项
-    //   backTitle: '返回',
-    //   style: {
-    //     backgroundColor: '#fff'
-    //   },
-    //   titleStyle: {
-    //       color: 'green'
-    //   }
-    // },
-    cardStack: {
-      gesturesEnabled: true
+  navigationOptions:{ // 屏幕导航的默认选项, 也可以在组件内用 static navigationOptions 设置(会覆盖此处的设置)
+    navigation: {
+      header:
+      { // 导航栏相关设置项
+        backTitle: '返回',
+        style: {
+          backgroundColor: '#FF0000'
+        },
+        titleStyle: {
+            color: '#BFEFFF'
+        }
+      },
+      cardStack: {
+        gesturesEnabled: true
+      }
     }
   },
   mode: 'card',  // 页面切换模式, 左右是card(相当于iOS中的push效果), 上下是modal(相当于iOS中的modal效果)
