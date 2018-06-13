@@ -122,7 +122,6 @@ class LeancloudHelp {
     })
     return result
   }
-
 }
 
 export default LeancloudHelp
