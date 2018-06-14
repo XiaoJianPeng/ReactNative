@@ -231,6 +231,15 @@ const styles = StyleSheet.create({
     padding : 10,
     fontSize : 26,
     height : 100,
+  },
+  container:{
+    flex: 1,
+    backgroundColor:'#fff'
+  },
+  icon: {
+      height: 22,
+      width: 22,
+      resizeMode: 'contain'
   }
 })
 export default HomeApp

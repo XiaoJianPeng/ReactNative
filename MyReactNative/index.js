@@ -14,13 +14,16 @@ import SectionListTest from './componts/SectionListTest'
 import FetchTest from './componts/FetchTest'
 */
 //#endregion
-import {Theme} from 'teaset';
+// import {Theme} from 'teaset';
 import AV from 'leancloud-storage';
-import App from './testApp/ReactNavigationApp'
-AV.init({
-  appId: 'VKJfEk81YqWIqkxLtqxlyGpH-gzGzoHsz',
-  appKey: 'H1hrm0dJWbnpzFAS6jJRsmuD'
-});
+// import { Realtime } from 'leancloud-realtime';
+import App from './testApp/ReactNavigationApp';
+
+const appId = 'VKJfEk81YqWIqkxLtqxlyGpH-gzGzoHsz'
+const appKey = 'H1hrm0dJWbnpzFAS6jJRsmuD'
+// 初始化存储 SDK
+AV.init({appId, appKey});
+
 // Theme.set(Theme.themes.default);
 
 AppRegistry.registerComponent('MyReactNative', () => App);

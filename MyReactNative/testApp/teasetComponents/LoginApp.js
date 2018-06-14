@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, AppRegistry, Image} from 'react-native';
+import {View, Image} from 'react-native';
 import {Label, Input, Button} from 'teaset';
 import AV from 'leancloud-storage';
 
@@ -73,10 +73,11 @@ class LoginApp extends Component {
     );
   }
   async onlogIn() {
+    console.warn('正在登录.......');
     await AV.User.logIn(this.state.username, this.state.password).then((loggedInUser) => {
       alert('登录成功');
       console.warn('登录成功', loggedInUser);
-      this.props.navigation.navigate('Home', {msg: '登录成功！'});
+      this.props.navigation.navigate('TabMain', {msg: '登录成功！'});
     }, function (error) {
       console.error(error)
     });
