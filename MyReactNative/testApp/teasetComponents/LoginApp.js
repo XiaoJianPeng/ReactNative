@@ -66,7 +66,7 @@ class LoginApp extends Component {
             <Label style={{color: '#8a6d3b', fontSize: 16, paddingLeft: 8}} text='登录' />
           </Button>
           <Button onPress={() => {
-          this.props.navigation.navigate('Home')
+          this.props.navigation.navigate('TabMain',{msg: '实时通信'})
         }} title="下一页" />
         </View>
       </View>
@@ -77,7 +77,7 @@ class LoginApp extends Component {
     await AV.User.logIn(this.state.username, this.state.password).then((loggedInUser) => {
       alert('登录成功');
       console.warn('登录成功', loggedInUser);
-      this.props.navigation.navigate('TabMain', {msg: '登录成功！'});
+      this.props.navigation.navigate('TabMain', {msg: '实时通信'});
     }, function (error) {
       console.error(error)
     });

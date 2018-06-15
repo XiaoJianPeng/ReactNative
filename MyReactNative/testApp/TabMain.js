@@ -11,6 +11,8 @@ export default TabMain = createBottomTabNavigator({
       //这里设置Tabbar不同页面可能会不同的属性
       tabBarVisible: true,
       tabBarLabel:'主页',
+      title: '主页',
+      header: null,
       // tabBarIcon:(({tintColor, focused}) => {
       //   return(
       //     <Image
@@ -27,6 +29,8 @@ export default TabMain = createBottomTabNavigator({
       //这里设置Tabbar不同页面可能会不同的属性
       tabBarVisible: true,
       tabBarLabel:'聊天',
+      title: '聊天',
+      header: null,
       // tabBarIcon:(({tintColor, focused}) => {
       //   return(
       //     <Image

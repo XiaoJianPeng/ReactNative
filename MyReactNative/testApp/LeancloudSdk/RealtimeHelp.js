@@ -12,14 +12,16 @@ class RealtimeHelp extends Realtime {
   /**
    * 启动实施通信，并发送一条信息
    */
-  async createIMCClient (receiver ='xiao') {
+  async createIMCClient (receiver ='xiao', conversationName) {
     let username = AV.User.current().get('username')
     // 用户名admin作为clientId ,获取IMClient对象实例
-    await this.createIMClient(AV.User.current()).then(function(res) {
+    await this.createIMClient(username).then(function(res) {
       // 创建与receiver之间的对话
       return res.createConversation({
         members: [receiver],
-        name: username + ' & ' + receiver,
+        name: username + ' & ' + receiver + '的测试',
+        transient: false,
+        unique: true,
       });
     }).then(function(conversation) {
       // 发送消息
@@ -28,21 +30,19 @@ class RealtimeHelp extends Realtime {
       console.warn(username + ' & ' + receiver, '发送成功！', message);
     }).catch(console.error);
   }
-  
+
   /**
    * 接收消息
    */
-  async receivedMsg () {
-    let username = AV.User.current().get('username')
-    let result = null 
-    await this.createIMClient(AV.User.current()).then((res) => {
-      console.log(res._conversationCache)
-      // res.on(Event.UNREAD_MESSAGES_COUNT_UPDATE, function(conversations) {
-      //   for(let conv of conversations) {
-      //     console.log(conv.id, conv.name, conv.unreadMessagesCount, conv);
-      //   }
-      // });
+  receivedMsg (newMsg) {
+    let username = AV.User.current().get('username');
+    this.createIMClient(username).then((res) => {
+      res.on(Event.MESSAGE, function(message, conversation) {
+        newMsg = message.text;
+        alert('1'+newMsg)
+      });
     }).catch(err => console.error(err));
   }
 }
+
 export default RealtimeHelp

@@ -5,9 +5,9 @@ import LeancloudHelp from '../LeancloudSdk/LeancloudHelp';
 import ItemDivideComponent from './ItemDivideComponent'
 
 class HomeApp extends Component {
-  static navigationOptions={
-    title: '主页',//设置标题内容
-  }
+  // static navigationOptions={
+  //   title: '主页',//设置标题内容
+  // }
   constructor(props) {
     super(props)
     this.state = {
@@ -25,7 +25,7 @@ class HomeApp extends Component {
     }
   }
   render() {
-    const {navigate} = this.props.navigation;
+    const { params } = this.props.navigation.state;
     return (
       <View style={{
         flex: 1, 
