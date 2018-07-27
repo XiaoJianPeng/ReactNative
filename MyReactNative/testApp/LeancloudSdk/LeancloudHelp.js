@@ -87,8 +87,9 @@ class LeancloudHelp {
    *         params 参数列表 接收数组格式 []
    * @param {*} limit 页大小
    * @param {*} currpage 当前页
+   * @param {[{sortWay: '排序方式', colName: '字段名'}]} sorts 排序规则
    */
-  static async getList (objName, params, limit, currpage) {
+  static async getList (objName, params, limit, currpage, sorts) {
     let query = LeancloudHelp.getQuery(objName)
     let result = {
       total: 0,
@@ -113,6 +114,17 @@ class LeancloudHelp {
     })
     query.limit(limit)
     query.skip((currpage-1)*limit)
+    if (sorts === undefined || sorts === null || sorts.length === 0) {
+      query.addAscending('createdAt')
+    } else {
+      for (let i = 0; i < sorts.length; i++) {
+        if (sorts[i].sortWay === Enum.sortWay.ascending) {
+          query.addAscending(sorts[i].colName)
+        } else {
+          query.addDescending(sorts[i].colName)
+        }
+      }
+    }
     await query.find().then(res => {
       result.data = res.map(item => {
         return item.toJSON()
