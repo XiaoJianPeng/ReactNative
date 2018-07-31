@@ -17,7 +17,8 @@ import FetchTest from './componts/FetchTest'
 // import {Theme} from 'teaset';
 import AV from 'leancloud-storage';
 // import { Realtime } from 'leancloud-realtime';
-import App from './testApp/ReactNavigationApp';
+// import App from './testApp/ReactNavigationApp';
+import App from './AppRealm'
 
 const appId = 'VKJfEk81YqWIqkxLtqxlyGpH-gzGzoHsz'
 const appKey = 'H1hrm0dJWbnpzFAS6jJRsmuD'

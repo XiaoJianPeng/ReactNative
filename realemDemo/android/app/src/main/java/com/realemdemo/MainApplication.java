@@ -1,4 +1,4 @@
-package com.myreactnative;
+package com.realemdemo;
 
 import android.app.Application;
 
