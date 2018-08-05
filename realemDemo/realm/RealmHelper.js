@@ -16,6 +16,7 @@ class RealmHelper {
         schema,
         schemaVersion: 1, // 版本
       }).then((realm) => {
+        realm.deleteModel()
         this.realm = realm
         console.log(this.realm)
       })
@@ -30,18 +31,21 @@ class RealmHelper {
    */
   async save(obj) {
     let result
-    if(!obj.objName) {
-      obj.objName = this.schema.name
+    try {
+      if(!obj.objName) {
+        obj.objName = this.schema.name
+      }
+      console.log(this.realm)
+      await this.realm.write(() => {
+        obj.data.forEach(element => {
+          this.realm.create(obj.objName, element, obj.update)
+        })
+        const resList = this.realm.objects(obj.objName)
+        result = JSON.parse(JSON.stringify(resList))
+      })      
+    } catch (error) {
+      throw error
     }
-    console.log(this.realm)
-    await this.realm.write(() => {
-      obj.data.forEach(element => {
-        this.realm.create(obj.objName, element, obj.update)
-      })
-      // const res = this.realm.create(obj.objName, obj.data)
-      const resList = this.realm.objects(obj.objName) //.filtered('username = "Tom"');
-      result = JSON.parse(JSON.stringify(resList))
-    })
     return result
   }
 
