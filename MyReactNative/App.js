@@ -9,18 +9,30 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
 } from 'react-native';
+import Bonus from './designPattern/strategyPattern/Bonus'
+import {strategy} from './designPattern/strategyPattern/Enum'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+// const instructions = Platform.select({
+//   ios: 'Press Cmd+R to reload,\n' +
+//     'Cmd+D or shake for dev menu',
+//   android: 'Double tap R on your keyboard to reload,\n' +
+//     'Shake or press menu button for dev menu',
+// });
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  test = () => {
+    let bonus = new Bonus(3000, strategy.SS)
+    bonus.getBonus()
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -31,8 +43,13 @@ export default class App extends Component<Props> {
           To get started, edit App.js
         </Text>
         <Text style={styles.instructions}>
-          {instructions}
         </Text>
+        <Button
+          onPress={this.test}
+          title="年终奖计算"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+        />
       </View>
     );
   }
