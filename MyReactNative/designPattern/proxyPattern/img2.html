@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>图片预加载</h1>
+    <script>
+        var myImage = (() => {
+            var imgNode = document.createElement('img')
+            document.body.appendChild(imgNode)
+            return {
+                setSrc: (src) => {
+                    imgNode.src = src
+                }
+            }
+        })();
+        var proxyImg = (() =>{
+            var img = new Image
+            img.onload = () => {
+                myImage.setSrc(img.src)
+            }
+            return {
+                setSrc: (src) => {
+                    myImage.setSrc('file:///C:/Users/Admin/Pictures/loading.gif')
+                    img.src = src
+                }
+            }
+        })()
+        proxyImg.setSrc('http://img.zcool.cn/community/0117e2571b8b246ac72538120dd8a4.jpg@1280w_1l_2o_100sh.jpg')
+    </script>
+</body>
+</html>

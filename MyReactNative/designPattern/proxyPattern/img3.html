@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var mult = function () {
+            var a = 1;
+            for (var i = 0, l = arguments.length; i < l; i++) {
+                a = a * arguments[i]
+            }
+            return a
+        }
+        var createProxyFactory = function(fn) {
+            var cache = {}
+            return function(numbers) {
+                var args = numbers.join( ',')
+                if(args in cache) {
+                    console.log('2', cache)
+                    return cache[args]
+                }
+                console.log('1', cache)
+                return cache[args] = fn.apply(this, numbers)
+            }
+        }
+        var proxyMult = createProxyFactory(mult)
+        console.log(proxyMult([1,2,3,4]))
+        console.log(proxyMult([1,2,3,4]))
+    </script>
+</head>
+<body>
+    <h1>工厂缓存代理</h1>
+    
+</body>
+</html>
