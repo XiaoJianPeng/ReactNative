@@ -1,6 +1,6 @@
 import { AppRegistry } from 'react-native'
 import React, {Component} from 'react'
-import App from './App'
+import App from './designPattern/observerPattern/App'
 //#region 原生组件练习
 /* reactNative 原生组件练习
 // import LotsOfGreetings from './componts/LotsOfGreetings'

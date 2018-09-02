@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>发布-订阅  余额提醒</h1>
+    <script>
+        let bank = {
+                userList: []
+        }
+        bank.addListen = function(user) {
+            this.userList.push(user)
+        }
+        bank.sendMsg = function(userId, balanceChange) {
+            const user = this.userList.find(item => item.userId === userId)
+            if(user) {
+                user.balance += balanceChange
+                console.log('尊敬的用户'+user.name+'，你的账号余额发生'+ balanceChange+'元变化，目前可用余额为：'+user.balance)
+            }
+        }
+        bank.addListen({
+            userId: 1,
+            name: '小明',
+            balance: 1000
+        })
+        bank.addListen({
+            userId: 2,
+            name: '小红',
+            balance: 2000
+        })
+        sendXiaoming = function() {
+            console.log(document.getElementById('xiaoming').value)
+            bank.sendMsg(1, parseInt(document.getElementById('xiaoming').value))
+        }
+        sendXiaohong = function() {
+            console.log(document.getElementById('xiaohong').value)
+            bank.sendMsg(2, parseInt(document.getElementById('xiaohong').value))
+        }
+    </script>
+    <div>
+        小明账户变化金额<input id="xiaoming" type="text" value="0">
+        <button type="submit" onclick="sendXiaoming()">确定</button>
+        <br>
+        小红账户变化金额<input id="xiaohong" type="text" value="0">
+        <button type="submit" onclick="sendXiaohong()">确定</button>
+    </div>
+</body>
+</html>
