@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+</head>
+<body>
+<script>
+    var getProCity = function () {
+        var data = [
+            {
+                id: 1,
+                province: 'HeNan',
+                citys: [
+                    {
+                        id: 1,
+                        city: 'ZhengZhou'
+                    },
+                    {
+                        id: 2,
+                        city: 'LuoYang'
+                    }
+                ],
+            },
+            {
+                id: 2,
+                province: 'ShanDong',
+                citys: [
+                    {
+                        id: 1,
+                        city: 'JiNan'
+                    }
+                ]
+            }
+        ]
+        return data;
+    }
+    var render = function (fn) {
+        console.log('开始渲染全国地图');
+        document.write(JSON.stringify(fn()));
+    };
+    var proCity = {
+        HeNan: {
+            id: 1,
+            citys:{
+                ZhengZhou:1,
+                LuoYang:2
+            }
+        },
+        ShanDong: {
+            id:2,
+            citys:{
+                JiNan:1,
+                YanTai:2
+            }
+        }
+    }
+    var proCityAdapter = function(proCity){
+        let data =[]
+        var keys = Object.keys(proCity)
+        console.log(keys)
+        keys.forEach(element => {
+            var pro = {
+                id: proCity[element].id,
+                province: element,
+                citys: []
+            }
+            var citys = proCity[element].citys
+            var childKeys = Object.keys(citys)
+            childKeys.forEach(item => {
+                pro.citys.push({
+                    id: citys[item].id,
+                    city: item
+                })
+            })
+            data.push(pro)
+        })
+        return () => { return data}
+    }
+    // proCityAdapter(proCity)
+    render(getProCity);
+    render(proCityAdapter(proCity));
+</script>
+</body>
+</html>

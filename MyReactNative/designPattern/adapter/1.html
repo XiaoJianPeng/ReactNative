@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+</head>
+<body>
+    <script src="RenderMap.js" />
+    <script>
+        var baiduMap = {
+            show: function() {
+                console.log('渲染百度地图')
+            }
+        }
+        var googleMap = {
+            show: function() {
+                console.log('渲染google地图')
+            }
+        }
+        var gaodeMap = {
+            display: function() {
+                console.log('渲染高德地图')
+            }
+        }
+        var gaodeAdapter = {
+            show: function() {
+                return gaodeMap.display()
+            }
+        }
+        var baidu = new RenderMap(baiduMap)
+        baidu.renderMap()
+        var gaode = new RenderMap(gaodeAdapter)
+        gaode.renderMap()
+    </script>
+</body>
+</html>
