@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="./MacorCommand.js"></script>
+</head>
+<body>
+    <div>
+        <button id="button">按我</button>
+    </div>
+    <script>
+       var openAcCommand = {
+            execute: function() {
+                console.log('打开空调')
+            },
+            add: function() {
+                console.error('叶子对象不能添加子节点')
+            }
+        }
+        openAcCommand.add()
+
+        var openTvCommand = {
+            execute: function() {
+                console.log('打开电视')
+            }
+        }
+
+        var openSoundCommand = {
+            execute: function() {
+                console.log('打开音响')
+            }
+        }
+        var macorCommand1 = new MacorCommand()
+        macorCommand1.add(openTvCommand)
+        macorCommand1.add(openSoundCommand)
+
+        var macorCommand = new MacorCommand()
+        macorCommand.add(openAcCommand)
+        macorCommand.add(macorCommand1)
+        // macorCommand.execute()
+        var setCommand = (function( command ){
+            document.getElementById( 'button' ).onclick = function(){
+                command.execute();
+            }
+        })( macorCommand );
+    </script>
+</body>
+</html>
