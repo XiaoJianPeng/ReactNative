@@ -56,31 +56,31 @@
             }
         }
     }
-    var proCityAdapter = function(proCity){
-        let data =[]
-        var keys = Object.keys(proCity)
-        console.log(keys)
-        keys.forEach(element => {
-            var pro = {
-                id: proCity[element].id,
-                province: element,
-                citys: []
-            }
-            var citys = proCity[element].citys
-            var childKeys = Object.keys(citys)
-            childKeys.forEach(item => {
-                pro.citys.push({
-                    id: citys[item].id,
-                    city: item
-                })
+var proCityAdapter = function(proCity){
+    let data =[]
+    var keys = Object.keys(proCity)
+    console.log(keys)
+    keys.forEach(element => {
+        var pro = {
+            id: proCity[element].id,
+            province: element,
+            citys: []
+        }
+        var citys = proCity[element].citys
+        var childKeys = Object.keys(citys)
+        childKeys.forEach(item => {
+            pro.citys.push({
+                id: citys[item].id,
+                city: item
             })
-            data.push(pro)
         })
-        return () => { return data}
-    }
-    // proCityAdapter(proCity)
-    render(getProCity);
-    render(proCityAdapter(proCity));
+        data.push(pro)
+    })
+    return () => { return data}
+}
+// proCityAdapter(proCity)
+render(getProCity);
+render(proCityAdapter(proCity));
 </script>
 </body>
 </html>

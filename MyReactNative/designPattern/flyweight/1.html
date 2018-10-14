@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="Model.js"></script>
+</head>
+<body>
+    
+    <script>
+        let iM = 1
+        while(iM <= 50){
+            var model = new Model('男', 'clothes' + iM)
+            model.takePhoto()
+            iM++
+        }
+        let iF = 1
+        while(iF <= 50){
+            var model = new Model('女', 'clothes' + iF)
+            model.takePhoto()
+            iF++
+        }
+
+    </script>
+</body>
+</html>

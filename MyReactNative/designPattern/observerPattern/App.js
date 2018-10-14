@@ -37,7 +37,9 @@ export default class App extends Component {
     }
   }
   sendMsg = () => {
-    bank.sendMsg(this.state.userId,this.state.balanceChange)
+    b+
+    
+    ank.sendMsg(this.state.userId,this.state.balanceChange)
   }
 
   render() {

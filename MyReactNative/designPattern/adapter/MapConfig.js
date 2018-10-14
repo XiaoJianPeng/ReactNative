@@ -5,3 +5,10 @@ class BaiduMap extends MapBase{
         super()
     }
 }
+
+class GaodeMap extends MapBase{
+    constructor(name = '高德') {
+        super()
+    }
+    
+}
