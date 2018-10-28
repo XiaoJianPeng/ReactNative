@@ -1,0 +1,15 @@
+const {Chain, shoppingA, shoppingB, shoppingC} = require('./Responsibility')
+// shopping('A')
+// shopping('B')
+// shoping('C')
+// shopping('')
+
+const chainA = new Chain(shoppingA)
+const chainB = new Chain(shoppingB)
+const chainC = new Chain(shoppingC)
+chainA.setNextSuccessor(chainB)
+chainB.setNextSuccessor(chainC)
+
+chainA.passRequest('A')
+chainA.passRequest('B')
+chainA.passRequest('C')
